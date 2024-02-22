@@ -1,0 +1,78 @@
+header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 60px;
+    width: calc(100% - 80px * 2);
+    padding: 0 80px;
+    background-color: #1f1f1f;
+    z-index: 114;
+    display: flex;
+}
+header .brand {
+    position: relative;
+    margin: 12px 0;
+    height: 36px; /* calc(60px - 12px * 2) */
+}
+header .brand .text {
+    margin: 0;
+    height: 36px;
+    line-height: 36px;
+    font-size: 22px;
+    font-weight: bolder;
+}
+header .separator {
+    /* flex: 1; */
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+}
+header .nav .link {
+    color: #fff;
+    width: 68px;
+    height: 60px;
+    line-height: 58px;
+    font-size: 16px;
+    text-align: center;
+    display: inline-block;
+}
+header .nav .active {
+    font-size: 18px;
+    font-weight: bolder;
+    color: #000;
+    background-color: #fff;
+}
+
+.view {
+    position: relative;
+    left: 0;
+    top: 60px;
+    width: 100%;
+    height: auto;
+    min-height: calc(100% - 60px);
+    overflow: hidden;
+}
+
+.splash {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1f1f1f;
+    z-index: 114514;
+    transition: all 1s;
+}
+.splash p {
+    margin: 0;
+    font-size: 38px;
+    font-weight: bolder;
+    position: absolute;
+    left: 0;
+    top: calc(50% - 30px);
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    transition: all 1s;
+}

@@ -1,0 +1,6 @@
+.main {
+    width: calc((112px + 18px + 18px) * 2);
+    position: static;
+    margin: 30px auto;
+    transform: none;
+}

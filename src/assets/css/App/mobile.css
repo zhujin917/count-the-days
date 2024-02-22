@@ -1,0 +1,8 @@
+header {
+    width: calc(100% - 20px * 2);
+    padding: 0 20px;
+}
+
+.splash {
+    zoom: .75;
+}

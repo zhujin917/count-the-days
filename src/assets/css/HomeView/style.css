@@ -1,0 +1,53 @@
+.main {
+    position: absolute;
+    left: calc(100% / 2);
+    top: calc((100% - 60px) / 2);
+    transform: translate(-50%, -50%);
+    width: calc((112px + 18px + 18px) * 4);
+}
+
+.main .timer {
+    position: relative;
+    margin: 12px 18px;
+    display: inline-block;
+}
+.main .timer .progress {
+    --size: 112px;
+    --stroke-width: 6px;
+    --r: calc((var(--size) - var(--stroke-width)) / 2);
+    position: relative;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    transform: rotate(-90deg);
+    margin: 0 auto;
+    display: block;
+}
+.main .timer .progress circle {
+    cx: calc(var(--size) / 2);
+    cy: calc(var(--size) / 2);
+    r: var(--r);
+    stroke-width: var(--stroke-width);
+    fill: none;
+}
+.main .timer .progress .first {
+    stroke: rgb(255 255 255 / 25%);
+}
+.main .timer .progress .second {
+    stroke: #fff;
+}
+.main .timer .dura {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    line-height: 112px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.main .timer .text {
+    font-size: 17px;
+    text-align: center;
+    margin: 18px 0;
+}

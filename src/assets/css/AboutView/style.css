@@ -1,0 +1,41 @@
+.main {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.main .quotation {
+    position: absolute;
+    left: 50%;
+    top: calc(50% - 45px);
+    width: calc(100% - 60px);
+    max-width: 650px;
+    height: auto;
+    transform: translate(-50%, -50%);
+    user-select: text;
+}
+.main p {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all .3s;
+}
+.main .show {
+    opacity: 1;
+    transform: none;
+}
+.main p::selection {
+    background-color: #fff;
+    color: #000;
+}
+.main .quotation .text {
+    font-size: 34px;
+    font-weight: bolder;
+    margin: 0;
+}
+.main .quotation .author {
+    font-size: 18px;
+    font-weight: normal;
+    margin: 20px 0 0 0;
+}

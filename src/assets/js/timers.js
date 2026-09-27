@@ -1,14 +1,17 @@
+import { Solar, Lunar } from "lunar-javascript";
+
+function getReqsByLunarMd(m, d, last = 1) {
+    const ima = Solar.fromDate(new Date());
+    const thisYear = Lunar.fromYmd(ima.getYear(), m, d).getSolar();
+    const solar = ima.isBefore(thisYear.next(last)) ? thisYear : Lunar.fromYmd(ima.getYear() + 1, m, d).getSolar();
+    return {
+        year: solar.getYear(),
+        month: solar.getMonth() - 1,
+        date: solar.getDay()
+    };
+}
+
 const timers = [{
-    text: "午休",
-    reqs: { hour: 13 },
-    last: [1, "h"],
-    cycl: [1, "d"]
-}, {
-    text: "困觉",
-    reqs: { hour: 22 },
-    last: [8, "h"],
-    cycl: [1, "d"]
-}, {
     text: "周末",
     reqs: { day: 6 },
     last: [2, "d"],
@@ -20,7 +23,7 @@ const timers = [{
     cycl: [1, "y"]
 }, {
     text: "春节",
-    reqs: { year: 2025, month: 0, date: 29 },
+    reqs: getReqsByLunarMd(1, 1, 8),
     last: [8, "d"],
     cycl: [1, "y"]
 }, {
@@ -35,28 +38,18 @@ const timers = [{
     cycl: [1, "y"]
 }, {
     text: "端午节",
-    reqs: { month: 5, date: 10 },
+    reqs: getReqsByLunarMd(5, 5),
     last: [1, "d"],
     cycl: [1, "y"]
 }, {
     text: "中秋节",
-    reqs: { month: 8, date: 15 },
-    last: [3, "d"],
+    reqs: getReqsByLunarMd(8, 15),
+    last: [1, "d"],
     cycl: [1, "y"]
 }, {
     text: "国庆节",
     reqs: { month: 9, date: 1 },
     last: [7, "d"],
-    cycl: [1, "y"]
-}, {
-    text: "寒假",
-    reqs: { month: 0, date: 19 },
-    last: [1, "m"],
-    cycl: [1, "y"]
-}, {
-    text: "暑假",
-    reqs: { month: 6, date: 1 },
-    last: [2, "m"],
     cycl: [1, "y"]
 }];
 

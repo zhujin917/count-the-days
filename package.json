@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "dayjs": "^1.11.10",
+    "lunar-javascript": "^1.7.7",
     "vue": "^3.4.15",
     "vue-router": "^4.2.5"
   },

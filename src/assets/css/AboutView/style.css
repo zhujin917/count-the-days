@@ -1,28 +1,23 @@
 .main {
     position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    left: 50%;
+    top: calc(50% - 15px);
+    width: calc(100% - 60px);
+    max-width: 650px;
+    height: fit-content;
+    transform: translate(-50%, -50%);
 }
 
 .main .quotation {
-    position: absolute;
-    left: 50%;
-    top: calc(50% - 45px);
-    width: calc(100% - 60px);
-    max-width: 650px;
-    height: auto;
-    transform: translate(-50%, -50%);
     user-select: text;
 }
 .main p {
     opacity: 0;
     transform: translateY(10px);
-    transition: all .3s;
+    transition: all .5s;
 }
 .main .show {
-    opacity: 1;
+    opacity: 1 !important;
     transform: none;
 }
 .main p::selection {
@@ -38,4 +33,36 @@
     font-size: 18px;
     font-weight: normal;
     margin: 20px 0 0 0;
+}
+
+.main .configuration {
+    margin-top: 70px;
+    opacity: 0;
+    transition: opacity .5s;
+}
+.main .configuration .checkbox {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 14px;
+    height: 14px;
+    border-radius: 14px;
+    border: solid 1px #fff;
+}
+.main .configuration .checkbox.checked {
+    background-color: #fff;
+}
+.main .configuration .checkbox svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.main .configuration .checkbox:not(.checked) svg {
+    opacity: 0;
+}
+.main .configuration .label {
+    display: inline-block;
+    vertical-align: baseline;
+    font-size: 14px;
+    margin-left: 4px;
 }

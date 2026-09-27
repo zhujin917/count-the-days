@@ -1,30 +1,6 @@
-<script setup>
-import { RouterLink, RouterView } from "vue-router";
-</script>
-
-<template>
-    <header>
-        <div class="brand">
-            <p class="text">计日以俟</p>
-        </div>
-        <div class="separator"></div>
-        <div class="nav" ref="nav">
-            <RouterLink v-for="link in navLinks" v-bind:key="link" :to="link.path">
-                <div class="link" :data-path="link.path">{{ link.text }}</div>
-            </RouterLink>
-        </div>
-    </header>
-
-    <div class="view">
-        <RouterView></RouterView>
-    </div>
-
-    <div class="splash" ref="splash">
-        <p>献给勇敢面对生活的你。</p>
-    </div>
-</template>
-
 <script>
+import { RouterLink, RouterView } from "vue-router";
+
 export default {
     data() {
         return {
@@ -39,16 +15,20 @@ export default {
     },
     mounted() {
         let splash = this.$refs.splash;
-        let splash_p = splash.querySelector("p");
-        setTimeout(() => {
-            splash_p.style.opacity = "1";
-        }, 1000);
-        setTimeout(() => {
-            splash.style.opacity = "0";
-        }, 4000);
-        setTimeout(() => {
-            splash.remove();
-        }, 5000);
+        if (!localStorage.getItem("splash_displayed")) {
+            let splash_p = splash.querySelector("p");
+            setTimeout(() => {
+                splash_p.style.opacity = "1";
+            }, 1000);
+            setTimeout(() => {
+                splash.style.opacity = "0";
+            }, 4000);
+            setTimeout(() => {
+                splash.remove();
+            }, 5000);
+            localStorage.setItem("splash_displayed", "1");
+        }
+        else splash.remove();
     },
     watch: {
         $route(to) {
@@ -61,6 +41,32 @@ export default {
     }
 };
 </script>
+
+<template>
+    <header>
+        <div class="backdrop"></div>
+        <div class="backdrop"></div>
+        <div class="backdrop"></div>
+        <div class="contents">
+            <div class="brand">
+                <p class="text">计日以俟</p>
+            </div>
+            <div class="nav" ref="nav">
+                <RouterLink v-for="link in navLinks" v-bind:key="link" :to="link.path">
+                    <div class="link" :data-path="link.path">{{ link.text }}</div>
+                </RouterLink>
+            </div>
+        </div>
+    </header>
+
+    <div class="view">
+        <RouterView></RouterView>
+    </div>
+
+    <div class="splash" ref="splash">
+        <p>献给勇敢面对生活的你。</p>
+    </div>
+</template>
 
 <style>
 /* global */
